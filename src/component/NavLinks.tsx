@@ -25,7 +25,7 @@ const NavLinks = async () => {
                 <li key={category.id}>
                     <Link
                         href={`/category/${category.slug}`}
-                        className="flex items-center gap-2 text-gray-700 hover:text-green-600"
+                        className="flex items-start gap-2 text-gray-700 hover:text-green-600"
                     >
                         <span className="text-xl">
                             {category.icon}

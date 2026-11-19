@@ -25,8 +25,6 @@ const Marquee = async () => {
     }
 
     const products: Product[] = await response.json();
-
-    // Duplicate products for continuous scrolling
     const marqueeItems = [...products, ...products];
 
     const formatNumber = (value: number) =>
@@ -38,9 +36,7 @@ const Marquee = async () => {
         <div className="container mx-auto">
             <MarqueeText direction="right">
                 <div className="w-full overflow-hidden bg-base-100 border-y border-base-300 py-2 container mx-auto ">
-
                     <div className="flex w-max animate-marquee hover:[animation-play-state:paused]">
-
                         {marqueeItems.map((item, index) => (
                             <div
                                 key={`${item.id}-${index}`}
@@ -48,18 +44,15 @@ const Marquee = async () => {
                             >
                                 {/* Product Icon */}
                                 <span>{item.image || item.categoryIcon}</span>
-
                                 {/* Product Name */}
                                 <span className="text-sm font-medium">
                                     {item.nameBn}
                                 </span>
-
                                 {/* Today's Price */}
                                 <span className="text-sm font-semibold">
                                     {formatNumber(item.today)} টাকা/
                                     {item.unit === "kg" ? "কেজি" : item.unit}
                                 </span>
-
                                 {/* Price Change */}
                                 <span
                                     className={`text-sm font-bold ${item.change.dir === "up"
@@ -73,9 +66,9 @@ const Marquee = async () => {
                                 </span>
                             </div>
                         ))}
-
                     </div>
-                </div> </MarqueeText>
+                </div>
+            </MarqueeText>
         </div>
     );
 };
