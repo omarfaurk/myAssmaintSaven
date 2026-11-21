@@ -2,6 +2,7 @@
 import React from 'react';
 import NavLinks from './NavLinks';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const Navbar = () => {
     const date = new Date().toLocaleDateString("bn-BD", {
@@ -42,35 +43,34 @@ const Navbar = () => {
                                     />
                                 </svg>
                             </div>
-
                             {/* Mobile Category Menu */}
                             <ul
                                 tabIndex={0}
-                                className="menu menu-vertical dropdown-content bg-base-100 rounded-box z-50 mt-3 w-56 p-2 shadow"
+                                className="menu menu-vertical dropdown-content bg-base-100 rounded-box z-50 mt-4 mr-4 w-56 p-2 shadow"
                             >
                                 <NavLinks />
                             </ul>
                         </div>
 
                         {/* Logo and Website Name */}
-                        <div className="flex items-center gap-3 ml-2">
-                            <Image
-                                src="/logo-icon.png"
-                                alt="Logo Images"
-                                width={30}
-                                height={30}
-                            />
-
-                            <div>
-                                <h1 className="text-sm sm:text-xl font-bold text-gray-900">
-                                    বাজার দর
-                                </h1>
-
-                                <p className="text-[10px] sm:text-xs text-gray-500">
-                                    {date}
-                                </p>
+                        <Link href={"/"}>
+                            <div className="flex items-center gap-3 ml-2">
+                                <Image
+                                    src="/logo-icon.png"
+                                    alt="Logo Images"
+                                    width={30}
+                                    height={30}
+                                />
+                                <div>
+                                    <h1 className="text-sm sm:text-xl font-bold text-gray-900">
+                                        বাজার দর
+                                    </h1>
+                                    <p className="text-[10px] sm:text-xs text-gray-500">
+                                        {date}
+                                    </p>
+                                </div>
                             </div>
-                        </div>
+                        </Link>
                     </div>
 
                     {/* Authentication */}

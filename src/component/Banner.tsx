@@ -15,7 +15,7 @@ const Banner = () => {
                 {/* Left Content */}
                 <div className="space-y-6">
                     <span className="inline-flex items-center gap-2 rounded-full bg-green-100 px-4 py-2 text-sm font-semibold text-green-700">
-                        <span>📅</span>
+
                         {NewDay}
                     </span>
                     <div className="space-y-4">
