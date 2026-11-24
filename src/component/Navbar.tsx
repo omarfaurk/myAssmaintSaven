@@ -1,16 +1,29 @@
 
-import React from 'react';
 import NavLinks from './NavLinks';
 import Image from 'next/image';
 import Link from 'next/link';
+import UseSection from './UseSection';
+import BanglaDate from './BanglaDate';
 
-const Navbar = () => {
-    const date = new Date().toLocaleDateString("bn-BD", {
-        weekday: "long",
-        year: "numeric",
-        month: "long",
-        day: "numeric",
-    });
+interface CategoriesTypeScript {
+    id: string;
+    slug: string;
+    nameBn: string;
+    icon: string;
+}
+
+const Navbar = async () => {
+
+    // Fetch Categories API
+    const response = await fetch(
+        "https://openapi.programming-hero.com/api/bazardor/categories"
+    );
+
+    if (!response.ok) {
+        throw new Error("Failed to fetch categories");
+    }
+
+    const categories: CategoriesTypeScript[] = await response.json();
 
     return (
         <>
@@ -43,17 +56,18 @@ const Navbar = () => {
                                     />
                                 </svg>
                             </div>
+
                             {/* Mobile Category Menu */}
                             <ul
                                 tabIndex={0}
                                 className="menu menu-vertical dropdown-content bg-base-100 rounded-box z-50 mt-4 mr-4 w-56 p-2 shadow"
                             >
-                                <NavLinks />
+                                <NavLinks categories={categories} />
                             </ul>
                         </div>
 
-                        {/* Logo and Website Name */}
-                        <Link href={"/"}>
+                        {/* Logo */}
+                        <Link href="/">
                             <div className="flex items-center gap-3 ml-2">
                                 <Image
                                     src="/logo-icon.png"
@@ -61,12 +75,14 @@ const Navbar = () => {
                                     width={30}
                                     height={30}
                                 />
+
                                 <div>
                                     <h1 className="text-sm sm:text-xl font-bold text-gray-900">
                                         বাজার দর
                                     </h1>
+
                                     <p className="text-[10px] sm:text-xs text-gray-500">
-                                        {date}
+                                        <BanglaDate />
                                     </p>
                                 </div>
                             </div>
@@ -75,15 +91,7 @@ const Navbar = () => {
 
                     {/* Authentication */}
                     <div className="navbar-end">
-                        <div className="flex items-center gap-1 sm:gap-2">
-                            <button className="btn btn-sm btn-outline btn-success">
-                                সাইন ইন
-                            </button>
-
-                            <button className="btn btn-sm btn-success">
-                                সাইন আপ
-                            </button>
-                        </div>
+                        <UseSection />
                     </div>
 
                 </div>
@@ -92,9 +100,9 @@ const Navbar = () => {
             <hr className="border-t border-gray-300 w-full m-0" />
 
             {/* Desktop Navigation */}
-            <div className="hidden lg:flex justify-start container mx-auto">
+            <div className="hidden  lg:flex justify-left container mx-auto">
                 <ul className="menu menu-horizontal px-1 gap-4">
-                    <NavLinks />
+                    <NavLinks categories={categories} />
                 </ul>
             </div>
 
@@ -102,4 +110,5 @@ const Navbar = () => {
         </>
     );
 };
+
 export default Navbar;

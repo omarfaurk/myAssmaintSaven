@@ -97,6 +97,7 @@ const Highprice = async () => {
                 ))}
             </div>
         </section>
+
     );
 };
 

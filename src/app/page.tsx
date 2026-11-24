@@ -1,6 +1,7 @@
 import Banner from "@/component/Banner";
 import Highprice from "@/component/Highprice";
 import Lowprice from "@/component/Lowprice";
+import Totalproducts from "@/component/Totalproducts";
 
 
 export default function Home() {
@@ -9,6 +10,7 @@ export default function Home() {
       <Banner />
       <Highprice />
       <Lowprice />
+      <Totalproducts />
     </div>
   );
 }

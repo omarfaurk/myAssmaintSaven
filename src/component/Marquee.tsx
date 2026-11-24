@@ -33,10 +33,10 @@ const Marquee = async () => {
         }).format(value);
 
     return (
-        <div className="container mx-auto">
+        <div>
             <MarqueeText direction="right">
                 <div className="w-full overflow-hidden bg-base-100 border-y border-base-300 py-2 container mx-auto ">
-                    <div className="flex w-max animate-marquee hover:[animation-play-state:paused]">
+                    <div className="flex w-max animate-marquee hover:paused">
                         {marqueeItems.map((item, index) => (
                             <div
                                 key={`${item.id}-${index}`}

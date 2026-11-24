@@ -1,5 +1,8 @@
 
-import Link from 'next/link';
+"use client";
+
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 interface CategoriesTypeScript {
     id: string;
@@ -8,35 +11,41 @@ interface CategoriesTypeScript {
     icon: string;
 }
 
-const NavLinks = async () => {
-    const response = await fetch(
-        "https://openapi.programming-hero.com/api/bazardor/categories"
-    );
+interface NavLinksProps {
+    categories: CategoriesTypeScript[];
+}
 
-    if (!response.ok) {
-        throw new Error("Failed to fetch categories");
-    }
-
-    const data: CategoriesTypeScript[] = await response.json();
-
+const NavLinks = ({ categories = [] }: NavLinksProps) => {
+    const pathname = usePathname();
     return (
         <>
-            {data.map((category) => (
-                <li key={category.id}>
-                    <Link
-                        href={`/category/${category.slug}`}
-                        className="flex items-start gap-2 text-gray-700 hover:text-green-600"
-                    >
-                        <span className="text-xl">
-                            {category.icon}
-                        </span>
+            {categories.map((category) => {
+                // Route path
+                const href = `/category/${category.slug}`;
 
-                        <span className="text-sm font-medium">
-                            {category.nameBn}
-                        </span>
-                    </Link>
-                </li>
-            ))}
+                // Active category check
+                const isActive = pathname === href;
+
+                return (
+                    <li key={category.id}>
+                        <Link
+                            href={href}
+                            className={`flex items-center gap-2 rounded-lg px-3 py-2 transition-all duration-200 ${isActive
+                                ? "bg-[#05893E] text-white font-bold border-b-2 border-[#05893E]"
+                                : " hover:bg-[#05893E] text-black hover:text-white "
+                                }`}
+                        >
+                            <span className="text-xl">
+                                {category.icon}
+                            </span>
+
+                            <span className="text-sm font-medium">
+                                {category.nameBn}
+                            </span>
+                        </Link>
+                    </li>
+                );
+            })}
         </>
     );
 };
