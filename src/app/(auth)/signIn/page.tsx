@@ -48,10 +48,10 @@ const SignInPage = () => {
                 className="flex flex-col gap-1.5 h-fit rounded-2xl w-full max-w-md border border-gray-200 bg-white p-6 sm:p-8 shadow-sm"
             >
                 <label className="label text-sm font-medium text-neutral-800">ইমেইল</label>
-                <input name="email" type="email" className="input w-full rounded-xl" placeholder="you@example.com" required />
+                <input name="email" type="email" className="input w-full border rounded-xl" placeholder="you@example.com" required />
 
                 <label className="label text-sm font-medium text-neutral-800 mt-3">পাসওয়ার্ড</label>
-                <input name="password" type="password" className="input w-full rounded-xl" placeholder="কমপক্ষে ৮ অক্ষর" minLength={8} required />
+                <input name="password" type="password" className="input w-full border rounded-xl" placeholder="কমপক্ষে ৮ অক্ষর" minLength={8} required />
 
                 <button type="submit" disabled={loading} className="btn btn-success text-white w-full rounded-xl mt-4">
                     {loading ? <span className="loading loading-spinner loading-sm" /> : "সাইন ইন"}
@@ -72,7 +72,7 @@ const SignInPage = () => {
 
                 <p className="mt-6 text-center text-xs sm:text-sm text-neutral-500">
                     অ্যাকাউন্ট নেই?{" "}
-                    <Link href="/signup" className="font-semibold text-[#0b8438] hover:underline">
+                    <Link href="/sign-Up" className="font-semibold text-[#0b8438] hover:underline">
                         সাইন আপ করুন
                     </Link>
                 </p>

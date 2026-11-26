@@ -63,7 +63,7 @@ const SignUpPage = () => {
 
     return (
         <div className="min-h-screen bg-[#f6f8f7] flex flex-col items-center justify-center my-10 px-4">
-            {/* Top Heading */}
+
             <div className="text-center mb-6">
                 <h1 className="text-3xl sm:text-4xl font-bold text-neutral-900">
                     অ্যাকাউন্ট তৈরি করুন
@@ -73,7 +73,7 @@ const SignUpPage = () => {
                 </p>
             </div>
 
-            {/* Form Card */}
+
             <form
                 onSubmit={onSubmit}
                 className="fieldset rounded-2xl w-full max-w-md border border-gray-200 bg-white p-6 sm:p-8 shadow-sm"
